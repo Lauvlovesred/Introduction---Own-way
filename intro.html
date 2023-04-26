@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="intro.css" />
+    <title>Hello, Lance</title>
+  </head>
+
+  <body>
+    <!--NavBar Start-->
+    <header class="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+          <a class="violet">I'm <span class="pink">Lance</span></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link me-3" aria-current="page" href="index.html"
+                >Home</a
+              >
+              <a class="nav-link me-3" href="index.html">About Me</a>
+              <span class="nav-link me-3 button btn text-white"
+                ><a href="intro.html">Explore My World</a></span
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- NavBar End -->
+
+    <!-- Hero Section -->
+    <section class="hero-2">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-lg-6">
+            <center>
+              <img src="img/hero-2.png" class="img-fluid" alt="" />
+            </center>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card-container">
+              <div
+                class="card-image img-fluid"
+                id="card-image"
+                style="background-image: url('https://i.pinimg.com/474x/8e/8a/c3/8e8ac3c793a82c5226797e4ae44ea97f.jpg')"
+              ></div>
+              <div class="card-content">
+                <div class="card-question" id="card-question">
+                  Welcome aboard, mates! Since you're here I'll assume you want to know more about me 😏
+                </div>
+                <button class="card-button" id="card-button">
+                  Click Me
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero End -->
+    
+    <script>
+      const images = [
+        "https://i.pinimg.com/474x/d7/c9/e9/d7c9e923dbce871cefaf6bd7864845de.jpg",
+        "https://i.pinimg.com/474x/1d/51/47/1d5147dc3ba4202280fc84bfb9318022.jpg",
+        "https://i.pinimg.com/474x/b2/d4/19/b2d41939c65ce1de0d1bbda7b34db958.jpg",
+        "https://i.pinimg.com/474x/ce/49/97/ce4997d03391041106c5d555b306c77a.jpg",
+        "https://i.pinimg.com/474x/e2/4b/bc/e24bbc19c2b12345ecbff21521e04cfd.jpg",
+        "https://i.pinimg.com/474x/23/32/23/2332236e06caa9000505d7daa27ad0ee.jpg",
+      ];
+      const questions = [
+        "I love reading books especially those self-help ones like 'a gentle reminder'",
+        "I love it when it rains. It excites me",
+        "I love grooving to good music",
+        "I love writing poems full of imagery where people could imagine the world in my eyes",
+        "I love watching cartoons and healing my inner child",
+        "I play overwatch and genshin",
+        "I love learning something new",
+        "I love designing and making websites",
+        "I love to drink coffee while I'm reading. It's heavenly",
+        "I only have the color black in my wardrobe. It's easier to decide what to wear",
+        "I love silence and peace",
+        "I love my girlfriend, she's wonderful",
+        "I love long walks and night walks"
+      ];
+
+      const cardImage = document.getElementById("card-image");
+      const cardQuestion = document.getElementById("card-question");
+      const cardButton = document.getElementById("card-button");
+
+      let usedIndices = [];
+
+      function getRandomIndex() {
+        let randomIndex = Math.floor(Math.random() * images.length);
+        while (usedIndices.includes(randomIndex)) {
+          randomIndex = Math.floor(Math.random() * images.length);
+        }
+        usedIndices.push(randomIndex);
+        if (usedIndices.length > images.length / 2) {
+          usedIndices = [];
+        }
+        return randomIndex;
+      }
+
+      function changeCard() {
+        const randomIndex = getRandomIndex();
+        cardImage.style.backgroundImage = `url(${images[randomIndex]})`;
+        cardQuestion.innerText = questions[randomIndex];
+      }
+
+      cardButton.addEventListener("click", changeCard);
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
